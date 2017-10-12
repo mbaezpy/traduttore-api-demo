@@ -8,8 +8,8 @@
   "engines": {
     "node": "5.9.1"
   },  
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./server/main.js"
+    "start": "node index.js"
   }  
 }
