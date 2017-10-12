@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Twitter bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+  
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>  
+  
+</head>
+
+<body>
+  <div class="container">
+    
+    <nav class="navbar navbar-static">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img class="logo" alt="Brand" src="img/logo.png"> 
+          </a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" class="navbar-link">Go to API definition</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation">
+          <h3 class="tab-title">Cartella Sanitaria</h3></li>
+        <li role="presentation" class="navbar-right">
+          <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+        <li role="presentation" class="navbar-right">
+          <a href="#events" aria-controls="events" role="tab" data-toggle="tab">Events</a></li>                            
+        <li role="presentation" class="active navbar-right">
+          <a href="#records" aria-controls="events" role="tab" data-toggle="tab">Records</a></li>                  
+      </ul>  
+    
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="records">
+        
+        
+        <div class="summary text-uppercase">
+        
+          <p>
+            Enter event 
+            <select id="sync-eventTypeId" class="form-control"> 
+              <option value="">Select</option> 
+              <option value="1">Blood pressure</option> 
+              <option value="2">Lunch</option> 
+            </select>            
+            for resident
+            <select id="sync-residentId" class="form-control"> 
+              <option value="">Select</option> 
+              <option value="aa90f1ee-6c54-4b01-90e6-d701748f0851">Carlo</option> 
+            </select>
+          </p>
+          
+          <button id="opt-data-entry" class="btn btn-primary">Enter record</button>                                
+
+        </div>
+        
+        <div class="data-entry"></div>
+        
+      </div>
+      
+      <!-- Events -->
+      <div role="tabpanel" class="tab-pane" id="events">
+        
+        <ul class="events">
+          
+        </ul>
+        
+      </div>
+      <!-- ] Events -->      
+      
+      <!-- Settings -->
+      <div role="tabpanel" class="tab-pane" id="settings">
+        
+        <ul>
+          
+        </ul>
+        
+      </div>
+      <!-- ] Settings -->
+   
+    </div>
+    <p></p>
+  </div>
+
+  <script id="data-tmpl" type="text/template">
+        <hr>
+          <h3>Sharing information</h3>
+          
+            <!-- Sharing contact [ -->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Contact information</h3>
+              </div>
+              <div class="panel-body">
+                  <div class="send-to">
+
+                          <div class="row">
+                            <div class="col-md-3">
+                              <img src="{contact.picture}" alt="{contact.name}" class="img-rounded">
+                              <h4>{contact.name}</h4>
+                              <h5>{relationship}</h5>                          
+                            </div>
+                            <div class="col-md-9">
+                            <h5>Communication notes</h5>
+                            Expected reations: <span class="label label-info">{reaction}</span>
+                            <p><i>{persona}</i></p>
+                            </div>
+                          </div>  
+
+                  </div>
+              </div>
+            </div>  
+            <!-- ] Sharing contact -->
+          
+            <!-- Event data -->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Event data (* automatic binding from Cartella *)</h3>
+              </div>
+              <div class="panel-body">
+                  <div class="data-form">
+
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">{param.title}</label>
+                        <input type="{param.type}" class="form-control" id="{param.name}" placeholder="{param.title}">
+                      </div>  
+
+                  </div>
+              </div>
+            </div>  
+            <!-- ] Event data -->       
+            
+            <!-- Translation  -->
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Translation</h3>
+              </div>
+              <div class="panel-body">
+                  <div class="translation-form">
+
+                      <div class="form-group">                        
+                        <textarea id="iTranslation" class="form-control"></textarea>                        
+                      </div>                      
+
+                  </div>
+              </div>
+            </div>  
+            <!-- ] Translation  -->                     
+                               
+          <div class="opt-save">
+            <button data-status="cancelled" class="btn opt-entry-cancel btn-danger {showCancel}">Cancel</button>   
+            <button data-status="snoozed" class="btn opt-entry-snooze btn-primary {showSnooze}">Later</button>
+            <button data-status="shared" class="btn opt-entry-share btn-success {showShare}">Share</button>    
+          </div>
+  </script>
+  
+  <script id="event-tmpl" type="text/template">
+    <li>
+      <p class="lead">{resident.name}</p>
+      <p>{createdOn}</p>
+      <p>{data.name}: {data.value}</p>
+      <div>
+        <span class="tag">
+          <span class="glyphicon glyphicon-user"></span>
+          <span>{staffName}</span> 
+        </span>
+        <span class="tag-sep"></span>
+      </div>
+    </li>    
+  </script>
+  <script src="app.js"></script>
+
+</body>
+
+</html>

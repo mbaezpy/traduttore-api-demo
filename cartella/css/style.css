@@ -1,0 +1,64 @@
+.logo {
+  height: 25px;
+  margin-top: -5px;
+}
+.tab-title{
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
+
+/* options */
+.options {
+  margin-top: 10px;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+  background: #efefef;
+  color: #4b4b4b;
+}
+.nav-pills>li>a{
+  padding: 5px 15px;
+}
+.nav-pills>li>.pill-title{
+  padding: 5px 15px;
+  display: block;
+}
+
+/* tag */
+.tag {
+  background: #efefef;
+  padding: .2em .6em .3em;
+  color: #7F8C8D;
+  font-size: .9em;
+}
+
+.tag-sep{
+  display: inline-block;
+  width: 1px;
+  background: #efefef;
+  height: 100%;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+
+/*guidelines*/
+.events {
+  margin-top: 20px;
+}
+.events .lead {
+  margin-bottom: 10px;
+}
+.events > li {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #efefef;
+  padding-bottom: 10px;
+    
+}
+.summary {
+  font-size: 1.2em;
+  color: #7F8C8D;
+  padding: 12px 10px;
+}
+.summary > span {
+  color: black;
+}
