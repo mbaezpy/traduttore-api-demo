@@ -39,6 +39,7 @@ var EventView = {
                       replace(/{category}/g, event.category).
                       replace(/{date}/g, event.startDate).
                       replace(/{indicator}/g, event.event.indicator.valueNum);            
+      $$(".event-list").html("");
       $$(".event-list").append(item);
     });
             
@@ -46,9 +47,17 @@ var EventView = {
       
 };
 
-Events.getEvents({
-  success: function(data){
-    console.log(data);
-    EventView.renderEvents(data);  
-  }
+function reload () {
+  Events.getEvents({
+    success: function(data){
+      console.log(data);
+      EventView.renderEvents(data);  
+    }
+  });
+}
+
+$$(".opt-reload").click(function(){
+  reload();
 });
+
+reload();
