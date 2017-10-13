@@ -166,7 +166,7 @@ var CartellaView = {
     
     $(opt.el).empty();
     
-    if (!data.isShareable) {
+    if (!data.currentSetting.isShareable) {
       alert("This is not configured to be shared with family contacts.");
       return;
     }
