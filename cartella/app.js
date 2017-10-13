@@ -182,6 +182,7 @@ var CartellaView = {
         
     data.sendTo.forEach(function(item){
       tmpl = tmpl.replace(/{contact.name}/g,  item.contact.name);
+      tmpl = tmpl.replace(/{contact.picture}/g,  item.contact.picture);      
       tmpl = tmpl.replace(/{relationship}/g,  item.relationship);
       tmpl = tmpl.replace(/{reaction}/g,  item.persona.expectedReactions[0]);
       tmpl = tmpl.replace(/{persona}/g,  item.persona.suggestion);
