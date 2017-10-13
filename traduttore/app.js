@@ -33,13 +33,15 @@ var EventView = {
   renderEvents: function(data){
     
     var tmpl = $$("#event-tmpl").text();
+    $$(".event-list").html("");
+    
     data[0].pneeds.forEach(function(event){
     
       var item = tmpl.replace(/{name}/g, event.name).
                       replace(/{category}/g, event.category).
                       replace(/{date}/g, event.startDate).
                       replace(/{indicator}/g, event.event.indicator.valueNum);            
-      $$(".event-list").html("");
+      
       $$(".event-list").append(item);
     });
             
