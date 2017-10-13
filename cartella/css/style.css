@@ -62,3 +62,7 @@
 .summary > span {
   color: black;
 }
+
+.hide {
+  display: none;
+}
