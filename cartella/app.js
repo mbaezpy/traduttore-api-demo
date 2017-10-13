@@ -163,10 +163,11 @@ var CartellaView = {
    */
   renderForm : function(opt){
     var data = opt.data;
+    var config = data.eventConfig.currentSetting;
     
     $(opt.el).empty();
     
-    if (!data.currentSetting.isShareable) {
+    if (!config.isShareable) {
       alert("This is not configured to be shared with family contacts.");
       return;
     }
@@ -186,7 +187,7 @@ var CartellaView = {
       tmpl = tmpl.replace(/{persona}/g,  item.persona.suggestion);
     });
     
-    var config = data.eventConfig.currentSetting;
+    
     config.extraParams.forEach(function(item){      
       tmpl = tmpl.replace(/{param.title}/g,  item.title);
       tmpl = tmpl.replace(/{param.type}/g,  item.type);
