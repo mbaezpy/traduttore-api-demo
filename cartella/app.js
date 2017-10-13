@@ -194,8 +194,8 @@ var CartellaView = {
       tmpl = tmpl.replace(/{param.name}/g,  item.name);      
     });
     
-    tmpl = tmpl.replace(/{showCancel}/g,  config.optCancel? "" : ".hide" );
-    tmpl = tmpl.replace(/{showSnooze}/g,  config.optSnooze? "" : ".hide");
+    tmpl = tmpl.replace(/{showCancel}/g,  config.optCancel? "" : "hide" );
+    tmpl = tmpl.replace(/{showSnooze}/g,  config.optSnooze? "" : "hide");
     tmpl = tmpl.replace(/{showShare}/g,  "");  
   
     
