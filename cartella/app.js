@@ -90,6 +90,8 @@ $(document).ready(function(){
 
 var baseUrl = "https://traduttore-api.herokuapp.com/api/v1.0";
 
+//baseUrl = "http://localhost:10010/api/v1.0";
+
 var Cartella = {
   
   config : [],
