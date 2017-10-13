@@ -66,3 +66,7 @@
 .hide {
   display: none;
 }
+
+.img-profile {
+  width: 100px;
+}
